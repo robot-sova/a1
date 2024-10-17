@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Script from '../components/script.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+<nav class="navbar">
+    <div class="logo">MyLogo</div>
+    <div class="menu-toggle">&#9776;</div> <!-- Hamburger Icon -->
+    <ul class="menu">
+        <li class="menu-item">
+            <a href="#">Option 1 <span class="arrow">&#9660;</span></a>
+            <div class="mega-menu">
+                <div class="mega-column">
+                    <h3>Column 1</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+                <div class="mega-column">
+                    <h3>Column 2</h3>
+                    <a href="#">Link 1</a>
+                </div>
+                <div class="mega-column">
+                    <h3>Column 3</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 4</a>
+                    <a href="#">Link 5</a>
+                </div>
+            </div>
+        </li>
+        <li class="menu-item">
+            <a href="#">Option 2 <span class="arrow">&#9660;</span></a>
+            <div class="mega-menu">
+                <div class="mega-column">
+                    <h3>Single Column</h3>
+                    <a href="#">Link 1</a>
+                </div>
+            </div>
+        </li>
+        <li class="menu-item">
+            <a href="#">Option 3 <span class="arrow">&#9660;</span></a>
+            <div class="mega-menu">
+                <div class="mega-column">
+                    <h3>Five Columns</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 4</a>
+                    <a href="#">Link 5</a>
+                </div>
+            </div>
+        </li>
+        <li class="menu-item">
+            <a href="#">Option 4 <span class="arrow">&#9660;</span></a>
+            <div class="mega-menu">
+                <div class="mega-column">
+                    <h3>Five Columns</h3>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 4</a>
+                    <a href="#">Link 5</a>
+                </div>
+            </div>
+        </li>
+        <li class="menu-item"><a href="#">Option 5</a></li>
+        <li class="menu-item"><a href="#">Option 6</a></li>
+        <li class="menu-item"><a href="#">Option 7</a></li>
+    </ul>
+	<script defer>
+// Menu Toggle for Mobile
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.menu').classList.toggle('show');
+});
+
+// Arrows for dropdown visibility (optional for more interactivity)
+const arrows = document.querySelectorAll('.menu-item a .arrow');
+arrows.forEach(arrow => {
+    arrow.addEventListener('click', function(e) {
+        e.target.parentElement.nextElementSibling.classList.toggle('show');
+        const dropdown = e.target.parentElement.nextElementSibling;
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+        } else {
+            dropdown.style.display = 'block';
+        }
+    });
+});
+</script>
+<
+</nav>
+	</main>
+</Layout>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo {
+    font-size: 24px;
+    color: white;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+}
+
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    color: black;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mega-column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.mega-column h3 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.mega-column a {
+    display: block;
+    color: #555;
+    padding: 5px 0;
+    text-decoration: none;
+}
+
+.mega-column a:hover {
+    color: orange;
+}
+
+.menu-item:hover .mega-menu {
+    display: flex;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.arrow {
+    margin-left: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: orange;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .mega-menu {
+        position: relative;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-item a {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+</style>
