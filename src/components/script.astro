@@ -1,0 +1,20 @@
+<script defer>
+// Menu Toggle for Mobile
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.menu').classList.toggle('show');
+});
+
+// Arrows for dropdown visibility (optional for more interactivity)
+const arrows = document.querySelectorAll('.menu-item a .arrow');
+arrows.forEach(arrow => {
+    arrow.addEventListener('click', function(e) {
+        e.target.parentElement.nextElementSibling.classList.toggle('show');
+        const dropdown = e.target.parentElement.nextElementSibling;
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+        } else {
+            dropdown.style.display = 'block';
+        }
+    });
+});
+</script>
