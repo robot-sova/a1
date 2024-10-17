@@ -5,6 +5,29 @@ import Card from '../components/Card.astro';
 
 <Layout title="Welcome to Astro.">
 	<main>
+	<script>
+		$(document).ready(function() {
+				//responsive menu toggle
+				$("#menutoggle").click(function() {
+					$('.xs-menu').toggleClass('displaynone');
+
+					});
+				//add active class on menu
+				$('ul li').click(function(e) {
+					e.preventDefault();
+					$('li').removeClass('active');
+					$(this).addClass('active');
+				});
+			//drop down menu	
+					$(".drop-down").hover(function() {
+						$('.mega-menu').addClass('display-on');
+					});
+					$(".drop-down").mouseleave(function() {
+						$('.mega-menu').removeClass('display-on');
+					});
+			
+			});
+			</script>
 		<!--Google -Fonts-->
 		<link href='https://fonts.googleapis.com/css?family=Sintony:400,700&subset=latin-ext' rel='stylesheet' type='text/css'>
 		
